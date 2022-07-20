@@ -67,7 +67,7 @@ const controlSearchRecipes = async function() {
     //4. Render padingnation
     pagingnationView.render(model.state.search);
   } catch (err) {
-    console.log(err)
+    searchView.renderError(err)
   }
 }
 
