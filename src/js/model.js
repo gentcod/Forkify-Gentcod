@@ -46,7 +46,6 @@ export const loadRecipe = async function (id) {
         else state.recipe.bookmarked = false;
 
     } catch (err) {
-        // console.error(`${err}`)
         throw err;
     }
 }
@@ -72,9 +71,6 @@ export const loadSearchResult = async function(query) {
 
         //Reset search page to first page when new query is requested
         state.search.page = 1;
-
-        // console.log(state.search.results)
-
     } catch (err) {
         throw err;
     }
@@ -90,7 +86,6 @@ export const getSearchResultPage = function(page = 1) {
 }
 
 export const updateServings = function(newServings) {
-    // console.log(state.recipe.ingredients)
     state.recipe.ingredients.forEach(ing => ing.quantity = (ing.quantity * newServings) / state.recipe.servings);
     state.recipe.servings = newServings;
 }
@@ -135,7 +130,6 @@ export const uploadRecipe = async function(newRecipe) {
         // console.log(Object.entries(newRecipe));
         const ingredients = Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '').map(ing => {
             const ingArr = ing[1].split(',').map(el => el.trim());
-            // const ingArr = ing[1].replaceAll(' ', '').split(',');
             if (ingArr.length !== 3) throw new Error('Wrong ingredient format! Please use corrent format ;)');
 
             const [quantity, unit, description] = ingArr;
